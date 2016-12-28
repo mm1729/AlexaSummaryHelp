@@ -7,7 +7,7 @@ router.get('/', function(req, res) {
   res.sendFile('index.html', {'root' : path.join(__dirname, '../public/html/')})
 })
 
-router.post('/oauth2callback', function(req, res) {
+router.get('/oauth2callback', function(req, res) {
   res.send(req)
 })
 

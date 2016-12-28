@@ -8,7 +8,8 @@ router.get('/', function(req, res) {
 })
 
 router.get('/oauth2callback', function(req, res) {
-  res.send(req)
+  console.log(req)
+  res.send("got oauth2")
 })
 
 module.exports = router

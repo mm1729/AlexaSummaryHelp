@@ -1,0 +1,18 @@
+{
+  "name": "SummaryHelp",
+  "version": "1.0.0",
+  "description": "SummaryHelp server for authorization",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js"
+  },
+  "author": "Moulindra Muchumari",
+  "license": "ISC",
+  "dependencies": {
+    "ejs": "^2.5.5",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "nodemon": "^1.11.0"
+  },
+  "env": "development"
+}

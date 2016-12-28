@@ -1,7 +1,7 @@
 var express = require('express')
 var path = require('path')
 var logger = require('morgan')
-var router = require('./router/router')
+var router = require('./router/router.js')
 var app = express()
 
 app.set('port', (process.env.PORT || 3000))

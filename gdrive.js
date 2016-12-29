@@ -49,3 +49,5 @@ gdrive.getUserName = function(token, callback) {
     }
   })
 }
+
+module.exports = gdrive;

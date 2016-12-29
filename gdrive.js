@@ -48,6 +48,7 @@ gdrive.getUserName = function(auth, callback) {
       callback(response, false);
     }
   })*/
+  console.log(auth)
   var service = google.drive('v3');
   service.files.list({
     auth: auth,

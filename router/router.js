@@ -13,11 +13,11 @@ router.get('/oauth2callback', function(req, res) {
   if(!code) {
     res.send("We encountered an error authenticating your Google Drive account. Please try again.")
   }
-  gdrive.authenticate(code, function(token, err) {
+  gdrive.authenticate(code, function(auth, err) {
     if(err === true) {
       res.send("We encountered an error authenticating your Google Drive account. Please try again.")
     } else {
-      gdrive.getUserName(token, function(username, err) {
+      gdrive.getUserName(auth, function(username, err) {
         if(err === true) {
           res.send("We encountered an error authenticating your Google Drive account. Please try again.")
         } else {

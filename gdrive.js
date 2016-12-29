@@ -30,16 +30,16 @@ gdrive.authenticate = function(code, callback) {
       return;
     }
     oauth2Client.credentials = token;
-    callback(token, false);
+    callback(oauth2client, false);
   });
 }
 
 // gets the user name of the token
 // @return {username, error} -> error is true and username is null if there is an error, else error is false
-gdrive.getUserName = function(token, callback) {
+gdrive.getUserName = function(auth, callback) {
   var service = google.drive('v3');
   service.about.get({
-    auth: token
+    auth: auth
   }, function(err, response) {
     if(err) {
       callback(null, true);

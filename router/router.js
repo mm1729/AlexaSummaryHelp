@@ -5,23 +5,27 @@ var gdrive = require('../gdrive.js')
 
 
 router.get('/', function(req, res) {
-  res.sendFile('signup.html', {'root' : path.join(__dirname, '../public/html/')})
+  res.render('../public/html/signup')
 })
 
 router.get('/oauth2callback', function(req, res) {
   var code = req.query.code
+  var errMsg = "We encountered an error authenticating your Google Drive account. Please try again."
   if(!code) {
-    res.send("We encountered an error authenticating your Google Drive account. Please try again.")
+    res.render('../public/html/error', {errMsg : errMsg})
   }
   gdrive.authenticate(code, function(auth, err) {
     if(err === true) {
-      res.send("We encountered an error authenticating your Google Drive account. Please try again.")
+      res.render('../public/html/error', {errMsg : errMsg})
     } else {
-      gdrive.getUserName(auth, function(username, err) {
+      gdrive.getUserName(auth, function(user, err) {
         if(err === true) {
-          res.send("We encountered an error authenticating your Google Drive account. Please try again.")
+          res.render('../public/html/error', {errMsg : errMsg})
         } else {
-          res.send(username)
+          res.render('../public/html/user', {
+            photoLink: user.user.photoLink,
+            displayName: user.user.displayName
+          })
         }
       })
     }
@@ -29,9 +33,7 @@ router.get('/oauth2callback', function(req, res) {
 })
 
 router.get('/signup', function(req, res) {
-  res.sendFile('signup.html', {'root' : path.join(__dirname, '../public/html/')})
+  res.render('../public/html/signup')
 })
-
-router.get('/')
 
 module.exports = router

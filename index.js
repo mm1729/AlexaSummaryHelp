@@ -6,8 +6,7 @@ var app = express()
 
 app.set('port', (process.env.PORT || 3000))
 
-app.engine('html', require('ejs').renderFile)
-app.set('view engine', 'html')
+app.set('view engine', 'ejs')
 
 app.use(express.static(path.join(__dirname, 'public')))
 console.log(path.join(__dirname, 'public'))

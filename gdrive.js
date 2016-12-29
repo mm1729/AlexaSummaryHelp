@@ -37,7 +37,7 @@ gdrive.authenticate = function(code, callback) {
 // gets the user name of the token
 // @return {username, error} -> error is true and username is null if there is an error, else error is false
 gdrive.getUserName = function(auth, callback) {
-  var service = google.drive('v3');
+  /*var service = google.drive('v3');
   service.about.get({
     auth: auth
   }, function(err, response) {
@@ -47,7 +47,31 @@ gdrive.getUserName = function(auth, callback) {
     } else {
       callback(response, false);
     }
-  })
+  })*/
+  var service = google.drive('v3');
+  service.files.list({
+    auth: auth,
+    pageSize: 10,
+    fields: "nextPageToken, files(id, name)"
+  }, function(err, response) {
+    if (err) {
+      console.log('The API returned an error: ' + err);
+      return;
+    }
+    var files = response.files;
+    if (files.length == 0) {
+      console.log('No files found.');
+    } else {
+      console.log('Files:');
+      for (var i = 0; i < files.length; i++) {
+        var file = files[i];
+        console.log('%s (%s)', file.name, file.id);
+      }
+      callback(files, false)
+    }
+  });
 }
+
+
 
 module.exports = gdrive;

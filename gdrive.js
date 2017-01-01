@@ -20,7 +20,7 @@ fs.readFile('client_secret.json', function processClientSecrets(err, content) {
   credentials.clientId = content.web.client_id;
   credentials.redirectUrl = content.web.redirect_uris[0];
   //temp
-  credentials.redirectUrl = 'https://ceee255a.ngrok.io/oauth2callback'
+  credentials.redirectUrl = 'https://summarizehelp.herokuapp.com/oauth2callback'
 });
 
 // authenticate the authorization code to get an access token

@@ -4,7 +4,7 @@
   "description": "SummaryHelp server for authorization",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js"
+    "start": "nodemon app.js"
   },
   "author": "Moulindra Muchumari",
   "license": "ISC",
@@ -15,7 +15,9 @@
     "google-auth-library": "^0.9.10",
     "googleapis": "^15.0.0",
     "morgan": "^1.7.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "node-summary": "^1.1.0",
+    "pdfjs-dist": "^1.6.414"
   },
   "env": "development"
 }
